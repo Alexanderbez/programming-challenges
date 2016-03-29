@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'kevin_bacon/graph'
+
+# --------------------------------------------------------------------------- #
+#                            Kevin Bacon CLI Tool                             #
+# --------------------------------------------------------------------------- #
+
+##################
+# Option parsing #
+##################
+
+options = {
+  :name => nil,
+  :input_path => nil
+}
+
+optparse = OptionParser.new do |opts|
+  opts.on('-n v', '--name <actor|actress>', 'Actor or actress to get to Kevin Bacon via Nth degree co-stars') do |o|
+    options[:name] = o
+  end
+
+  opts.on('-p v', '--input-path <path>', 'Input path representing film data') do |o|
+    options[:input_path] = o
+  end
+
+  opts.on( '-h', '--help', 'Display this help') do
+    puts opts
+    exit
+  end
+end
+
+begin
+  optparse.parse!
+
+  mandatory = [
+    :name,
+    :input_path
+  ]
+  missing = mandatory.select do |param|
+    options[param].nil?
+  end
+
+  unless missing.empty?
+    puts 'Missing options'
+    puts optparse
+    exit
+  end
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument
+  puts "Error: #{$!.to_s}"
+  puts optparse
+  exit
+end
+
+################
+# Compute path #
+################
+
+begin
+  @graph = KevinBacon::Graph.build(options[:input_path])
+rescue StandardError
+  puts "Error: #{$!.to_s}"
+  exit
+end
+
+begin
+  puts @graph.pretty_path(options[:name])
+rescue StandardError
+  puts "Error: #{$!.to_s}"
+  exit
+end

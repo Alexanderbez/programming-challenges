@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'kevin_bacon/graph'
+require 'pry'
+
+# --------------------------------------------------------------------------- #
+#                           Interactive Gem Console                           #
+# --------------------------------------------------------------------------- #
+
+Pry.start

@@ -1,0 +1,12 @@
+Now, let's assume that the wire was $10k and had been received. It was appearing in the Bank's API, but our code had a bug that was filtering it out as we tried to clean the transaction history. This went on for a week, and we had assumed he wasn't wiring, so we closed the deal without him.
+
+1.) Write an email to Dr. Horrible to explain the situation. What else can we do to help him out?
+
+Hello Dr. Horrible,
+
+Thank you for your patience as we looked into this matter. After some thorough investigation, we’ve come to understand that your investment into company X has indeed successfully taken place. However, due to a technical problem we encountered when filtering and displaying all your transactions, this one in particular was mishandled and thus not considered a valid transaction. Because this transaction was mishandled and it took a week prior to discovery, we closed the deal for company X without you. Our deepest apologies go out for this matter.
+
+In order to further assist you and attempt to make up for this matter, we can either reimburse you your $10k investment or provide you with the ability to invest in a different company of your choosing.
+
+—
+* Note: I’m not sure of the inner working of Angel List and how deals/transactions are closed. Another alternative to help Mr. Horrible out (what a great name), is possibly add him back on the deal even though it had already been closed after discovery of our mishap.

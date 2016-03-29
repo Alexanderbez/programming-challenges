@@ -1,0 +1,33 @@
+A bank account is more than just a list of transactions. To be complete, users should be able to deposit and withdraw funds.
+
+1.) Where do these flows live?
+
+These two pieces of functionality can ultimately live together in the same overarching flow as they accomplish similar tasks. However, you can segregate them by having sub-flows within a main flow. The main flow could live in a number of places such as directly within the transactions view, account view, or even as a separate view entirely.
+
+In the mockup I have for transactions, I’ve added a floating action button that could accomplish such a flow. A modal would appear with options to either withdraw or deposit funds with subsequent options for each action.
+
+2.) How does the user discover them?
+
+A user/account owner would discover them once he or she is logged in and is presented with the the main dashboard/view. Features such as tooltips or a walkthrough upon first login could guide a user to use the aforementioned flow(s).
+
+I believe the goal here is to have a minimal and yet user-intuitive layout. The lesser clutter the view has, while presenting the necessary information, the easier the account user can discover his or her needed actions.
+
+3.) What information should we require? How can we simplify?
+
+To simply things, each action would have common required information such as:
+
+- Account nickname
+- Setting up external bank account information
+- Amount to deposit to or withdraw from and the reciprocating account
+- When the funds should be allocated
+- Notes or description on transaction/investment (memo)
+
+4.) Are there any security concerns?
+
+Yes, of course. Being that we are dealing with financial transactions, large ones at that, security should be at the forefront of our concerns. Obviously, traffic should be served over SSL/TLS with an appropriate and well designed authentication and authorization layers. These mentioned layers should probably not be implemented in house, but rather leverage existing techniques, solutions and/or services.
+
+Implementations such as two-factor authentication and asymmetric encryption should be used as well.
+
+In addition, to proper authentication, there should be proper ACL’s or authorization. In other words, not every user under a possible domain/account should be able to withdraw or deposit funds as they see fit - pretty much have read/write access on certain portions of the account.
+
+* Note: There is an issue with the mockup in the transaction modal where the calendar widget is not being properly displayed.

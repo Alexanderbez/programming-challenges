@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  padding-top: 20px;
+}
+
+.ledger-btn {
+  bottom: 85%!important;
+  right: 24px;
+}
+
+.logo-text {
+  font-weight: lighter;
+}

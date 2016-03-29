@@ -1,0 +1,37 @@
+We've now launched your bank account UI and you're on customer support. You receive the following email:
+
+"Hello,
+
+I wired money for Startup X, and it doesn't show in my account.
+
+Please confirm.
+
+Dr. V. Horrible"
+
+1.) How would you start investigating this user's issue?
+
+I would first attempt to gather as much information as I could. This would include the amount of funds intended to invest, from what account these funds came from, and when was the transaction initiated. This could help immediately rule out things such as minimum days needed for funds to clear. 
+
+I would also look into that users account to see if the they indeed in fact attempt to initiate the transaction. I would also look into the information they submitted for the transaction. Perhaps we missed a validation step.
+
+Lately, I would respond to the user in a timely manner and let them know that we are looking into the issue. I would also provide them with dispute ID of some sort for future reference.
+
+2.) Who would you talk to and what questions would you ask?
+
+I would initially talk to the user in question and ask them the above questions (stated in answer to question #1), talk to the bank/entity where the funds intended to come from, and also to the developers.
+
+For the bank or entity where the funds came from, I would ask do they see a record of an attempted transaction from that account, was it authorized and if so, what happened? If the funds were not authorized, then why was that the case. If the bank or entity sees no such record, then odds are that the issue must be on our end.
+
+For the developers, I would ask to see logs around the given timestamp, where there any errors or was the transaction logged as successful or was there no record at all. Logs could include nginx/server logs, app logs and client logs.
+
+3.) What are some hypotheses and what would falsify them?
+
+Some hypotheses include:
+
+- The bank or entity from which the funds came from never received the transaction. Contacting the bank to verify this, given the users information, intended amount, and time of the transaction, would quickly falsify this.
+
+- The user never actually completely finished the transaction. Checking our logs and API records for the transaction request would allow us to determine if the user actually completed the transaction or not via our UI.
+
+- The user has not waited the predefined wait period for the funds to clear. Depending on the timestamp of when the user completed the transaction, assuming the user actually completed it, we could quickly determine if they need to possibly wait a few more business days.
+
+- The user indeed complete the transaction and it was successful, however, our UI is not showing the transaction from the API results query. Performing a manual query against the API would quickly invalidate this.

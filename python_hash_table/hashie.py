@@ -140,11 +140,11 @@ class Hashie:
       capacity >>= 1
       new_capacity += 1
 
-    # Increase current capacity power by one
+    # Increase table capacity
     new_capacity = 2 ** (new_capacity + 1)
 
     # Increase table size and set new capacity
-    self.__table.extend([None] * (new_capacity - self.__capacity))
+    self.__table.extend([None] * (new_capacity - old_capacity))
     self.__capacity = new_capacity
 
     # Rehash existing keys (only iterating over old table size)

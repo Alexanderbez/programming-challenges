@@ -45,7 +45,7 @@ class Hashie:
       self.size += 1
 
     # Resize the table if the size exceeds the load factor
-    if float(self.size) / self.__capacity >= self.__load_factor:
+    if (float(self.size) / self.__capacity) >= self.__load_factor:
       self.__resize()
 
     return value
@@ -120,7 +120,7 @@ class Hashie:
     hash_value = 14695981039346656037
 
     for x in str(id(key)):
-      hash_value ^= int(x)
+      hash_value ^= ord(x)
       hash_value *= fnv_prime
 
     return hash_value % self.__capacity

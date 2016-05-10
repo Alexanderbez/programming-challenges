@@ -120,7 +120,7 @@ class Hashie:
     hash_value = 14695981039346656037
 
     for x in str(id(key)):
-      hash_value ^= ord(x)
+      hash_value ^= int(x)
       hash_value *= fnv_prime
 
     return hash_value % self.__capacity

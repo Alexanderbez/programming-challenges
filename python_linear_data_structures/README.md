@@ -15,6 +15,8 @@ for node in ll.traverse():
 
 ll.size # >>> 5
 ll.empty() # >>> False
+ll.find(3) # >>> 2
+ll.get(0) # >>> 1
 ll.addHead(0)
 ll.pretty_print() # (0) -> (1) -> (2) -> (3) -> (4) -> (5)
 ll.remove() # >>> 5

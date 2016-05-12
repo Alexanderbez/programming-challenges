@@ -178,7 +178,7 @@ class LinkedList:
   def reverse_recursive(self, prev=None, curr=None):
     """Reverses the list in place (recursively)"""
 
-    if not prev and not curr and self.size != 0:
+    if not prev and not curr and not self.empty():
       # Invoke the initial recursive call
       self.reverse_recursive(None, self.head)
     elif not curr:

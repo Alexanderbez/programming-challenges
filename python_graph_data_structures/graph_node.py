@@ -1,38 +1,58 @@
 class GraphNode:
-  """Implementation of a node in an undirected graph with an arbitrary amount
-  of vertices.
+  """Implementation of a node in a graph with an arbitrary amount of neighbors
+  via an adjacency list. A node has a key, value, and a collection of edges
+  that contain node key values.
   """
 
-  def __init__(self, v):
-    self.data = v
-    self.__vertices = []
-    self.__num_vertices = 0
-
-  def append_vertex(self, node):
-    """Appends (connects) a vertex to the node.
+  def __init__(self, k, v):
+    """GraphNode class constructor.
 
     Keyword arguments:
-    node - a GraphNode object
+    k - the node/vertex key
+    v - the node/vertex value
     """
 
-    self.__vertices.append(node)
-    self.__num_vertices += 1
+    self.key = k
+    self.value = v
+    self.__edges = []
 
-    return node
+  def num_edges(self):
+    """Returns the total number of outbound edges."""
 
-  def vertices(self):
+    return len(self.__edges)
+
+  def has_edge(self, k):
+    """Determines if the node has an edge to another node by some key."""
+
+    return k in self.__edges
+
+  def add_edge(self, k):
+    """Appends (connects) a vertex to the node by the connecting nodes key.
+
+    Keyword arguments:
+    k - the connecting nodes key
+    """
+
+    self.__edges.append(k)
+
+    return self
+
+  def remove_edge(self, k):
+    """Removes an edge from the node by the connecting nodes key.
+
+    Keyword arguments:
+    k - the connecting nodes key
+    """
+
+    if k in self.__edges:
+      self.__edges.remove(k)
+
+    return self
+
+  def edges(self):
     """A generator to provide iteration over each connected vertex of a node.
     """
 
-    for vertex in self.__vertices:
-      yield vertex
-
-  def get_vertex(self, i):
-    """Gets the ith connected vertex of the node. If no vertex exists, None is
-    returned.
-
-    Keyword arguments:
-    i - desired child index
-    """
-
-    return self.__vertices[i] if i < self.__num_vertices else None
+    for edge in self.__edges:
+      # yield the connecting nodes key
+      yield edge
